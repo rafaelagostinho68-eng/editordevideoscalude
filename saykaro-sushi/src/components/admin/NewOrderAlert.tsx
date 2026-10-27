@@ -69,9 +69,17 @@ export function NewOrderAlert({ className = "" }: { className?: string }) {
   }, [beep, router, sound]);
 
   useEffect(() => { if (path.startsWith("/admin/pedidos")) { setAlert(null); setUnseen(0); } }, [path]);
+  // "(1) Painel…" na aba; o Next reescreve o título a cada atualização da página, então reaplicamos quando mudar.
   useEffect(() => {
-    const base = document.title.replace(/^\(\d+\)\s*/, "");
-    document.title = unseen > 0 ? `(${unseen}) ${base}` : base;
+    const apply = () => {
+      const base = document.title.replace(/^\(\d+\)\s*/, "");
+      const want = unseen > 0 ? `(${unseen}) ${base}` : base;
+      if (document.title !== want) document.title = want;
+    };
+    apply();
+    const mo = new MutationObserver(apply);
+    mo.observe(document.head, { childList: true, characterData: true, subtree: true });
+    return () => mo.disconnect();
   }, [unseen]);
 
   return (
