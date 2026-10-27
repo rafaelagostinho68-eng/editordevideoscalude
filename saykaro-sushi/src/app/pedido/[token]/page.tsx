@@ -32,7 +32,7 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
       </div>
 
       {waiting && (
-        <div className="mt-4 flex gap-3 rounded-2xl border border-gold/40 bg-gold/10 p-4 text-sm text-gold-soft">
+        <div className="mt-4 flex gap-3 rounded-2xl border border-gold/40 bg-gold/10 p-4 text-sm text-ink">
           <Info className="mt-0.5 shrink-0" size={18} />
           <p><strong>Falta só um passo:</strong> envie a mensagem do pedido pelo WhatsApp. O restaurante só recebe o pedido quando você toca em “enviar” no WhatsApp.</p>
         </div>
@@ -56,7 +56,7 @@ export default async function OrderPage({ params, searchParams }: { params: Prom
         <dl className="mt-4 space-y-1.5 border-t border-line pt-3 text-[15px]">
           <div className="flex justify-between"><dt className="text-muted">Produtos</dt><dd className="tabular-nums">{formatBRL(order.subtotalCents)}</dd></div>
           <div className="flex justify-between"><dt className="text-muted">Entrega</dt><dd>{order.fulfillment === "PICKUP" ? "Retirada" : order.deliveryFeeCents === null ? "A confirmar" : formatBRL(order.deliveryFeeCents)}</dd></div>
-          <div className="flex justify-between text-lg font-bold"><dt>{order.fulfillment === "DELIVERY" && order.deliveryFeeCents === null ? "Total dos produtos" : "Total"}</dt><dd className="tabular-nums text-gold-soft">{formatBRL(order.totalCents)}</dd></div>
+          <div className="flex justify-between text-lg font-bold"><dt>{order.fulfillment === "DELIVERY" && order.deliveryFeeCents === null ? "Total dos produtos" : "Total"}</dt><dd className="tabular-nums text-ink">{formatBRL(order.totalCents)}</dd></div>
         </dl>
         <p className="mt-4 text-sm text-muted">Pagamento: {order.paymentLabel}{order.fulfillment === "DELIVERY" && ` · Entrega em ${[order.street, order.streetNumber].filter(Boolean).join(", ")}${order.neighborhood ? ` — ${order.neighborhood}` : ""}`}</p>
       </section>

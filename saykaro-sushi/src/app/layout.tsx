@@ -26,11 +26,15 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export const viewport: Viewport = { themeColor: "#0a0a0c", width: "device-width", initialScale: 1, viewportFit: "cover" };
+export const viewport: Viewport = { themeColor: "#f8f5f0", width: "device-width", initialScale: 1, viewportFit: "cover" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" data-theme="light" suppressHydrationWarning>
+      <head>
+        {/* aplica o tema salvo ANTES da primeira pintura (evita "piscar"); padrão = claro */}
+        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem("sk_theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light")}catch(e){}` }} />
+      </head>
       <body>
         <CartProvider>{children}</CartProvider>
       </body>

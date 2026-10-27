@@ -42,8 +42,8 @@ export default async function CategoriesPage() {
             </div>
             <ActionForm action={renameCategory} submit="Salvar" className="mt-3 grid gap-3 sm:grid-cols-[1fr_1fr_auto] sm:items-end" submitClass="btn btn-sm">
               <input type="hidden" name="id" value={c.id} />
-              <Field name="name" label="Nome"><input id={`n${c.id}`} name="name" defaultValue={c.name} className="field" maxLength={60} required /></Field>
-              <Field name="description" label="Descrição"><input id={`d${c.id}`} name="description" defaultValue={c.description ?? ""} className="field" maxLength={200} /></Field>
+              <Field name="name" id={`n${c.id}`} label="Nome"><input id={`n${c.id}`} name="name" defaultValue={c.name} className="field" maxLength={60} required /></Field>
+              <Field name="description" id={`d${c.id}`} label="Descrição"><input id={`d${c.id}`} name="description" defaultValue={c.description ?? ""} className="field" maxLength={200} /></Field>
             </ActionForm>
             {c._count.products > 0 && <p className="hint">Para excluir, mova ou exclua antes os produtos desta categoria — ou apenas oculte-a.</p>}
           </li>

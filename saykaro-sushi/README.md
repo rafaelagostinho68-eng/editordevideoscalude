@@ -9,6 +9,12 @@ Pedido finalizado **pelo WhatsApp** (v1, sem cobrança online). A arquitetura j�
 | Painel | `/admin` (login obrigatório) |
 | Pedido do cliente | `/pedido/<token>` (link privado, `noindex`) |
 
+## Prévia
+Capturas do sistema (dados de exemplo; produtos ainda sem foto mostram o espaço reservado):
+[celular 1](docs/previa/1-cliente-celular-parte1.png) · [celular 2](docs/previa/2-cliente-celular-parte2.png) · [cardápio no desktop](docs/previa/3-cardapio-desktop.png) · [painel](docs/previa/4-admin-painel.png) · [produtos](docs/previa/5-admin-produtos.png) · [pedido](docs/previa/6-admin-detalhe-do-pedido.png) · [editar produto](docs/previa/7-admin-editar-produto.png) · [restaurante](docs/previa/8-admin-restaurante.png)
+
+**Temas:** o cardápio e o painel abrem no tema **claro**; o botão de lua/sol no topo alterna para o tema escuro (a escolha fica salva só naquele aparelho). As cores ficam em `src/app/globals.css` (`@theme` = claro, `[data-theme="dark"]` = escuro).
+
 ## Tecnologias
 Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · Prisma 6 + PostgreSQL · sharp (imagens) · zod (validação) · Vitest + Playwright (testes).
 

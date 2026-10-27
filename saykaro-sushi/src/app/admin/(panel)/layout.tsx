@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ExternalLink, LogOut } from "lucide-react";
 import { AdminNav } from "@/components/admin/AdminNav";
 import { ToriiIcon } from "@/components/brand/Icons";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { db } from "@/server/db";
 import { requireAdmin } from "@/server/auth/session";
 import { logoutAction } from "../login/actions";
@@ -20,10 +21,11 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         <div className="flex items-center justify-between gap-3 px-4 pt-3 lg:flex-col lg:items-start lg:pt-5">
           <Link href="/admin" className="flex items-center gap-2">
             <ToriiIcon className="h-7 w-7 text-shu" />
-            <span className="font-display text-lg font-bold uppercase tracking-[0.1em]">Saykaro</span>
+            <span className="font-brand text-lg font-extrabold uppercase tracking-[0.08em]">Saykaro</span>
           </Link>
-          <div className="flex items-center gap-2 lg:w-full lg:flex-col lg:items-stretch lg:pt-2">
+          <div className="flex items-center gap-2 lg:w-full lg:flex-row lg:pt-2">
             <Link href="/" target="_blank" className="btn btn-sm" aria-label="Abrir o cardápio em outra aba"><ExternalLink size={16} /> <span className="hidden sm:inline lg:inline">Ver cardápio</span></Link>
+            <ThemeToggle />
           </div>
         </div>
         <div className="px-3 py-3 lg:pt-4"><AdminNav counts={{ orders, pending }} /></div>

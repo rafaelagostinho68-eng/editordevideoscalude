@@ -41,16 +41,16 @@ export function Sheet({ open, onClose, title, children, footer, side = false }: 
   if (!open) return null;
   return (
     <div className={`fixed inset-0 z-50 flex ${side ? "md:justify-end" : "md:items-center md:justify-center"} items-end justify-center`}>
-      <div className="anim-fade absolute inset-0 bg-black/75 backdrop-blur-[2px]" onClick={onClose} aria-hidden="true" />
+      <div className="anim-fade absolute inset-0 bg-black/50" onClick={onClose} aria-hidden="true" />
       <div
         ref={ref} role="dialog" aria-modal="true" aria-label={title}
-        className={`anim-sheet relative flex max-h-[94dvh] w-full flex-col overflow-hidden rounded-t-3xl border border-line bg-surface shadow-2xl ${side ? "md:h-dvh md:max-h-none md:max-w-md md:rounded-none md:border-y-0 md:border-r-0" : "md:max-w-lg md:rounded-3xl"}`}
+        className={`anim-sheet relative flex max-h-[94dvh] w-full flex-col overflow-hidden rounded-t-3xl border border-line bg-surface shadow-xl ${side ? "md:h-dvh md:max-h-none md:max-w-md md:rounded-none md:border-y-0 md:border-r-0" : "md:max-w-lg md:rounded-3xl"}`}
       >
-        <button type="button" onClick={onClose} aria-label="Fechar" className="absolute right-3 top-3 z-10 grid h-11 w-11 place-items-center rounded-full bg-black/60 text-ink backdrop-blur transition hover:bg-black/80">
+        <button type="button" onClick={onClose} aria-label="Fechar" className="absolute right-3 top-3 z-10 grid h-11 w-11 place-items-center rounded-full border border-line bg-surface text-ink shadow-sm transition hover:bg-surface2">
           <X size={22} />
         </button>
         <div className="flex-1 overflow-y-auto overscroll-contain">{children}</div>
-        {footer && <div className="safe-bottom border-t border-line bg-surface/95 p-4 backdrop-blur">{footer}</div>}
+        {footer && <div className="safe-bottom border-t border-line bg-surface p-4">{footer}</div>}
       </div>
     </div>
   );

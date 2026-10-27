@@ -55,12 +55,12 @@ export function ActionForm({
 }
 
 /** Rótulo + campo + mensagem de erro do campo (lida do estado da Server Action). */
-export function Field({ name, label, hint, children, className }: { name: string; label: string; hint?: string; children: React.ReactNode; className?: string }) {
+export function Field({ name, id, label, hint, children, className }: { name: string; id?: string; label: string; hint?: string; children: React.ReactNode; className?: string }) {
   const state = useContext(Ctx);
   const error = state.fields?.[name];
   return (
     <div className={className}>
-      <label htmlFor={name} className="lbl">{label}</label>
+      <label htmlFor={id ?? name} className="lbl">{label}</label>
       {children}
       {hint && !error && <p className="hint">{hint}</p>}
       {error && <p className="err" role="alert">{error}</p>}

@@ -12,7 +12,7 @@ export default async function OgImage() {
   const [first, ...rest] = s.name.toUpperCase().split(" ");
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "linear-gradient(160deg,#2a0b0f 0%,#0a0a0c 60%)", color: "#f6f2ea", fontFamily: "serif" }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "#f8f5f0", color: "#1c1917", fontFamily: "serif" }}>
         {/* torii simplificado */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 28 }}>
           <div style={{ width: 150, height: 16, background: "#d3202d", borderRadius: 4 }} />
@@ -23,13 +23,13 @@ export default async function OgImage() {
           </div>
         </div>
         <div style={{ fontSize: 120, fontWeight: 800, letterSpacing: 12, lineHeight: 1 }}>{first}</div>
-        <div style={{ fontSize: 54, letterSpacing: 26, color: "#d3202d", marginTop: 10, fontWeight: 700 }}>{rest.join(" ") || "SUSHI"}</div>
-        <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 34, color: "#ebd291", fontSize: 30, letterSpacing: 8 }}>
-          <div style={{ width: 70, height: 2, background: "#c9a24a" }} />
+        <div style={{ fontSize: 54, letterSpacing: 26, color: "#cf1f2c", marginTop: 10, fontWeight: 700 }}>{rest.join(" ") || "SUSHI"}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 34, color: "#7a5a12", fontSize: 30, letterSpacing: 8 }}>
+          <div style={{ width: 70, height: 2, background: "#b08a2e" }} />
           DELIVERY
-          <div style={{ width: 70, height: 2, background: "#c9a24a" }} />
+          <div style={{ width: 70, height: 2, background: "#b08a2e" }} />
         </div>
-        <div style={{ marginTop: 40, fontSize: 36, fontStyle: "italic", color: "#ebd291" }}>{s.tagline}</div>
+        <div style={{ marginTop: 40, fontSize: 36, color: "#6b645c" }}>{s.tagline}</div>
       </div>
     ),
     size,

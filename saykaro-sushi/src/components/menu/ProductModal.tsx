@@ -59,14 +59,14 @@ function Inner({ product, onClose, paused, onAdded }: { product: MenuProduct; on
     <div className="flex flex-col">
       <div className="relative">
         <ProductImage src={product.imageUrl} thumb={product.thumbUrl} alt={product.imageAlt ?? product.name} large priority className="max-h-[300px]" />
-        {product.isNew && <span className="absolute left-3 top-3 rounded-full bg-gold px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-black">Novo</span>}
+        {product.isNew && <span className="absolute left-3 top-3 rounded-md bg-shu px-2 py-1 text-xs font-bold uppercase tracking-wide text-white">Novo</span>}
       </div>
       <div className="space-y-5 p-5 pb-6">
         <div>
           <h2 className="font-display text-2xl font-bold leading-tight text-ink">{product.name}</h2>
           <div className="mt-2 flex flex-wrap items-center gap-2">
             {product.portion && <span className="rounded-full border border-line bg-surface2 px-3 py-1 text-sm text-ink">{product.portion}</span>}
-            <span className="text-xl font-bold tabular-nums text-gold-soft">{formatBRL(product.priceCents)}</span>
+            <span className="text-xl font-bold tabular-nums text-ink">{formatBRL(product.priceCents)}</span>
           </div>
           {product.description && <p className="mt-3 text-[15px] leading-relaxed text-muted">{product.description}</p>}
         </div>
@@ -90,13 +90,13 @@ function Inner({ product, onClose, paused, onAdded }: { product: MenuProduct; on
                     <button
                       key={o.id} type="button" role={single ? "radio" : "checkbox"} aria-checked={on}
                       onClick={() => toggle(g.id, o.id, g.maxSelect)}
-                      className={`flex min-h-[48px] w-full items-center justify-between gap-3 rounded-xl border px-4 py-2 text-left transition ${on ? "border-gold bg-gold/10" : "border-line bg-surface2 hover:border-muted"}`}
+                      className={`flex min-h-[48px] w-full items-center justify-between gap-3 rounded-xl border px-4 py-2 text-left transition ${on ? "border-shu bg-shu/5" : "border-line bg-surface2 hover:border-muted"}`}
                     >
                       <span className="flex items-center gap-3">
-                        <span className={`grid h-6 w-6 place-items-center ${single ? "rounded-full" : "rounded-md"} border ${on ? "border-gold bg-gold text-black" : "border-muted"}`}>{on && <Check size={15} strokeWidth={3} />}</span>
+                        <span className={`grid h-6 w-6 place-items-center ${single ? "rounded-full" : "rounded-md"} border ${on ? "border-shu bg-shu text-white" : "border-muted"}`}>{on && <Check size={15} strokeWidth={3} />}</span>
                         <span className="text-[15px]">{o.name}</span>
                       </span>
-                      {o.priceCents > 0 && <span className="text-sm font-semibold text-gold-soft">+ {formatBRL(o.priceCents)}</span>}
+                      {o.priceCents > 0 && <span className="text-sm font-semibold text-ink">+ {formatBRL(o.priceCents)}</span>}
                     </button>
                   );
                 })}

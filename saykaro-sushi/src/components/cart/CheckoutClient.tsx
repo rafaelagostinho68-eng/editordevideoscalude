@@ -143,7 +143,7 @@ export function CheckoutClient({ settings }: { settings: PublicSettings }) {
       {settings.ordersPaused && (
         <div role="alert" className="mt-4 flex items-start gap-3 rounded-2xl border border-shu/50 bg-shu/10 p-4 text-sm"><AlertTriangle className="mt-0.5 shrink-0 text-bad" size={18} /><p><strong>Pedidos pausados.</strong> {settings.pausedMessage || "No momento não estamos recebendo pedidos."}</p></div>
       )}
-      {changed && <div role="status" className="mt-4 rounded-2xl border border-gold/40 bg-gold/10 p-4 text-sm text-gold-soft">{changed}</div>}
+      {changed && <div role="status" className="mt-4 rounded-2xl border border-gold/40 bg-gold/10 p-4 text-sm text-ink">{changed}</div>}
 
       <form onSubmit={submit} noValidate className="mt-5 grid gap-6 lg:grid-cols-[1fr_380px]">
         <div className="space-y-6">
@@ -169,7 +169,7 @@ export function CheckoutClient({ settings }: { settings: PublicSettings }) {
             <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-label="Entrega ou retirada">
               {([["DELIVERY", "Entrega", Truck, settings.deliveryEnabled], ["PICKUP", "Retirada", Store, settings.pickupEnabled]] as const).map(([v, label, Icon, enabled]) => (
                 <button key={v} type="button" role="radio" aria-checked={form.fulfillment === v} disabled={!enabled} onClick={() => set("fulfillment", v)}
-                  className={`flex h-14 items-center justify-center gap-2 rounded-2xl border font-semibold transition disabled:opacity-40 ${form.fulfillment === v ? "border-gold bg-gold/10 text-gold-soft" : "border-line bg-surface2"}`}>
+                  className={`flex h-14 items-center justify-center gap-2 rounded-2xl border font-semibold transition disabled:opacity-40 ${form.fulfillment === v ? "border-shu bg-shu/5 text-ink" : "border-line bg-surface2"}`}>
                   <Icon size={20} /> {label}
                 </button>
               ))}
@@ -224,7 +224,7 @@ export function CheckoutClient({ settings }: { settings: PublicSettings }) {
                 <div role="radiogroup" aria-label="Forma de pagamento" className="space-y-2">
                   {settings.paymentMethods.map((m) => (
                     <button key={m.id} type="button" role="radio" aria-checked={form.paymentId === m.id} onClick={() => set("paymentId", m.id)}
-                      className={`flex min-h-[52px] w-full items-center rounded-xl border px-4 text-left transition ${form.paymentId === m.id ? "border-gold bg-gold/10" : "border-line bg-surface2"}`}>{m.label}</button>
+                      className={`flex min-h-[52px] w-full items-center rounded-xl border px-4 text-left transition ${form.paymentId === m.id ? "border-shu bg-shu/5" : "border-line bg-surface2"}`}>{m.label}</button>
                   ))}
                   {errors.paymentMethodId && <p className="text-sm text-bad">{errors.paymentMethodId}</p>}
                 </div>
@@ -259,8 +259,8 @@ export function CheckoutClient({ settings }: { settings: PublicSettings }) {
             </ul>
             <dl className="mt-4 space-y-2 border-t border-line pt-4 text-[15px]">
               <div className="flex justify-between"><dt className="text-muted">Produtos</dt><dd className="tabular-nums">{formatBRL(subtotal)}</dd></div>
-              <div className="flex justify-between"><dt className="text-muted">Entrega</dt><dd className="text-right tabular-nums">{form.fulfillment === "PICKUP" ? "Retirada" : feeCents === null ? <span className="text-gold-soft">A confirmar pelo restaurante</span> : formatBRL(feeCents)}</dd></div>
-              <div className="flex items-baseline justify-between border-t border-line pt-3 text-lg font-bold"><dt>{form.fulfillment === "DELIVERY" && feeCents === null ? "Total dos produtos" : "Total"}</dt><dd className="tabular-nums text-gold-soft">{formatBRL(total)}</dd></div>
+              <div className="flex justify-between"><dt className="text-muted">Entrega</dt><dd className="text-right tabular-nums">{form.fulfillment === "PICKUP" ? "Retirada" : feeCents === null ? <span className="text-ink">A confirmar pelo restaurante</span> : formatBRL(feeCents)}</dd></div>
+              <div className="flex items-baseline justify-between border-t border-line pt-3 text-lg font-bold"><dt>{form.fulfillment === "DELIVERY" && feeCents === null ? "Total dos produtos" : "Total"}</dt><dd className="tabular-nums text-ink">{formatBRL(total)}</dd></div>
             </dl>
             {form.fulfillment === "DELIVERY" && feeCents === null && <p className="mt-2 text-xs text-muted">A taxa de entrega será informada pelo restaurante no WhatsApp e somada ao total.</p>}
 

@@ -86,17 +86,17 @@ export function MenuApp({ menu, settings }: { menu: MenuData; settings: PublicSe
               <p><strong>Pedidos pausados.</strong> {settings.pausedMessage || "No momento não estamos recebendo pedidos pelo cardápio."}</p>
             </div>
           )}
-          {settings.announcement && <div className="rounded-2xl border border-gold/40 bg-gold/10 p-4 text-sm text-gold-soft">{settings.announcement}</div>}
+          {settings.announcement && <div className="rounded-2xl border border-gold/50 bg-gold/10 p-4 text-sm text-ink">{settings.announcement}</div>}
         </div>
       )}
 
       {/* barra fixa: busca + categorias */}
-      <div className="sticky top-0 z-30 border-b border-line bg-bg/92 backdrop-blur-md">
+      <div className="sticky top-0 z-30 border-b border-line bg-bg/95 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center gap-2 px-3 py-2.5">
           <button
             type="button" aria-label={searchOpen ? "Fechar busca" : "Buscar produto"} aria-expanded={searchOpen}
             onClick={() => { setSearchOpen((v) => !v); if (searchOpen) setQuery(""); }}
-            className={`grid h-11 w-11 shrink-0 place-items-center rounded-full border transition ${searchOpen ? "border-gold bg-gold/10 text-gold-soft" : "border-line bg-surface text-ink"}`}
+            className={`grid h-11 w-11 shrink-0 place-items-center rounded-full border transition ${searchOpen ? "border-ink bg-surface2 text-ink" : "border-line bg-surface text-ink"}`}
           >
             {searchOpen ? <X size={20} /> : <Search size={20} />}
           </button>
@@ -105,7 +105,7 @@ export function MenuApp({ menu, settings }: { menu: MenuData; settings: PublicSe
               <button
                 key={s.id} ref={(el) => { chipRefs.current[s.id] = el; }} type="button" onClick={() => { setQuery(""); setSearchOpen(false); goto(s.id); }}
                 aria-current={!q && active === s.id ? "true" : undefined}
-                className={`h-11 shrink-0 rounded-full border px-4 text-[15px] font-semibold transition ${!q && active === s.id ? "border-shu bg-shu text-white" : "border-line bg-surface text-ink hover:border-muted"}`}
+                className={`h-11 shrink-0 rounded-full border px-4 text-[15px] font-semibold transition ${!q && active === s.id ? "border-ink bg-ink text-bg" : "border-line bg-surface text-ink hover:border-muted"}`}
               >
                 {s.name}
               </button>
@@ -130,9 +130,8 @@ export function MenuApp({ menu, settings }: { menu: MenuData; settings: PublicSe
         ) : (
           sections.map((s) => (
             <section key={s.id} id={`sec-${s.id}`} className="scroll-mt-[76px] pb-8" aria-labelledby={`h-${s.id}`}>
-              <div className="mb-3 flex items-center gap-3">
-                <h2 id={`h-${s.id}`} className="font-display text-[26px] font-extrabold leading-none">{s.name}</h2>
-                <span className="h-px flex-1 bg-gradient-to-r from-gold/50 to-transparent" />
+              <div className="mb-3 flex items-center gap-3 pt-1">
+                <h2 id={`h-${s.id}`} className="text-xl font-extrabold leading-none sm:text-2xl">{s.name}</h2>
               </div>
               {s.description && <p className="-mt-1 mb-3 text-sm text-muted">{s.description}</p>}
               <div className={grid}>{s.products.map((p) => <ProductCard key={`${s.id}-${p.id}`} p={p} onOpen={setOpen} onQuickAdd={quickAdd} paused={paused} />)}</div>

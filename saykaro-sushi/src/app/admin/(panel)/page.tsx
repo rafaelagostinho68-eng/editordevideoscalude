@@ -52,8 +52,8 @@ export default async function Dashboard() {
     <div className="space-y-6">
       <AutoRefresh seconds={30} />
       <header>
-        <h1 className="font-display text-2xl font-bold">Olá, {admin.name.split(" ")[0]} 👋</h1>
-        <p className="mt-1 text-sm text-muted">Resumo do restaurante.</p>
+        <h1 className="text-2xl font-bold">Painel</h1>
+        <p className="mt-1 text-sm text-muted">Olá, {admin.name.split(" ")[0]}. Resumo do restaurante.</p>
       </header>
 
       <section className={`card flex flex-wrap items-center gap-4 ${s.ordersPaused ? "border-gold/60" : ""}`} aria-label="Recebimento de pedidos">

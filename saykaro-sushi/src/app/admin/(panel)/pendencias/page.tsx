@@ -32,7 +32,7 @@ export default async function PendingPage() {
             </div>
           </article>
         ))}
-        {open.length === 0 && <p className="card text-sm text-muted">Nenhuma pendência em aberto. 🎉</p>}
+        {open.length === 0 && <p className="card text-sm text-muted">Nenhuma pendência em aberto.</p>}
       </section>
 
       <section className="card">

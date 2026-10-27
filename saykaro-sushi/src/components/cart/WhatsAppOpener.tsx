@@ -21,7 +21,7 @@ export function WhatsAppOpener({ url, token, auto, label }: { url: string; token
   return (
     <div>
       <a href={url} target="_blank" rel="noopener noreferrer" onClick={mark}
-        className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-[#15803d] text-lg font-bold text-white shadow-[0_14px_36px_-12px_rgba(21,128,61,.8)] transition hover:brightness-110">
+        className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-[#15803d] text-lg font-bold text-white transition hover:brightness-110">
         <WhatsAppIcon className="h-6 w-6" /> {label}
       </a>
       {opening && <p className="mt-3 text-center text-sm text-muted" role="status">Abrindo o WhatsApp… se nada acontecer, toque no botão acima.</p>}

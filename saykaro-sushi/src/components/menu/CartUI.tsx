@@ -14,7 +14,7 @@ export function CartBar() {
     <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-3 pb-[max(env(safe-area-inset-bottom),12px)]">
       <button
         type="button" onClick={() => setDrawerOpen(true)}
-        className="anim-sheet pointer-events-auto flex h-14 w-full max-w-xl items-center justify-between gap-3 rounded-full bg-shu px-5 text-white shadow-[0_14px_40px_-10px_rgba(211,32,45,.8)] ring-1 ring-white/10 transition hover:bg-shu-hot active:scale-[.99]"
+        className="anim-sheet pointer-events-auto flex h-14 w-full max-w-xl items-center justify-between gap-3 rounded-full bg-shu px-5 text-white shadow-lg transition hover:bg-shu-hot active:scale-[.99]"
         aria-label={`Ver carrinho, ${count} ${count === 1 ? "item" : "itens"}, ${formatBRL(subtotalCents)}`}
       >
         <span className="flex items-center gap-2.5 font-semibold">
@@ -74,7 +74,7 @@ export function CartDrawer({ paused }: { paused: boolean }) {
                     ))}
                     {l.notes && <p className="mt-1 text-sm italic text-muted">“{l.notes}”</p>}
                   </div>
-                  <p className="shrink-0 font-bold tabular-nums text-gold-soft">{formatBRL((l.unitPriceCents + l.optionsCents) * l.quantity)}</p>
+                  <p className="shrink-0 font-bold tabular-nums text-ink">{formatBRL((l.unitPriceCents + l.optionsCents) * l.quantity)}</p>
                 </div>
                 <div className="mt-2 flex items-center justify-between">
                   <Stepper size="sm" value={l.quantity} onChange={(q) => (q <= 0 ? remove(l.key) : setQty(l.key, q))} allowRemove />
