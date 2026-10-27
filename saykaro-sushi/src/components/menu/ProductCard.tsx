@@ -14,7 +14,7 @@ export function ProductCard({ p, onOpen, onQuickAdd, paused }: { p: MenuProduct;
 
       <div className="order-2 w-[124px] shrink-0 overflow-hidden rounded-xl sm:order-1 sm:w-full sm:rounded-none">
         <div className="relative">
-          <ProductImage src={p.imageUrl} thumb={p.thumbUrl} alt={p.imageAlt ?? p.name} className="sm:transition sm:duration-500 sm:group-hover:scale-[1.03]" />
+          <ProductImage src={p.imageUrl} thumb={p.thumbUrl} alt={p.imageAlt ?? p.name} art={p.art} className="sm:transition sm:duration-500 sm:group-hover:scale-[1.03]" />
           {p.isNew && !unavailable && <span className="absolute left-1.5 top-1.5 rounded-md bg-shu px-1.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-white">Novo</span>}
           {unavailable && <span className="absolute inset-0 grid place-items-center bg-surface/80 text-xs font-bold uppercase tracking-wider text-ink">Esgotado</span>}
         </div>

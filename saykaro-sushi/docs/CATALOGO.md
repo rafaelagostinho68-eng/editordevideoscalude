@@ -2,6 +2,9 @@
 
 Tudo é feito pelo painel (`/admin`) — não é preciso mexer em código nem reimplantar.
 
+## Cardápio rápido (o dia a dia)
+Em **Cardápio** (`/admin/produtos`): toque no **preço** ou no **nome** para editar (Enter salva, Esc cancela); use os interruptores **Disponível/Esgotado** e **No cardápio/Oculto**; **Voltar tudo ao estoque** limpa todos os esgotados de uma vez (bom para começar o dia); o interruptor ao lado do nome da categoria esconde a categoria inteira. O botão **⋯** de cada linha tem destaque, etiqueta NOVO, subir/descer e "Editar tudo".
+
 ## Produtos
 * **Produtos → Novo produto**: nome, categoria, preço (`19,90`), porção (opcional), descrição (opcional), visibilidade.
 * **Mudar preço/nome**: abra o produto e salve — vale na hora. Pedidos antigos **não mudam**.
@@ -18,6 +21,7 @@ Tudo é feito pelo painel (`/admin`) — não é preciso mexer em código nem re
 **Adicionais → Novo grupo**: nome (ex.: “Molho extra”), mínimo/máximo de escolhas, obrigatório ou não, opções (preço vazio = grátis) e **quais produtos** oferecem o grupo. Nenhum adicional pago foi cadastrado por conta própria: só entra o que o restaurante confirmar.
 
 ## Trocar fotos
+* **Várias de uma vez:** `Fotos` no menu → arraste as fotos (ou escolha no aparelho). Se o arquivo tem o nome do produto (`hot-filadelfia.jpg`, `Yakissoba Frutos do Mar.png`), o produto já vem escolhido; confira e toque em **Enviar**. Fotos sem nome claro (`IMG_2041.jpg`) você escolhe o produto na lista.
 * Produto → **Foto do produto → Enviar/Trocar imagem** (JPG, PNG ou WebP, até 5 MB, mínimo 200×150 px).
 * O sistema recorta em **4:3**, gera versão grande e miniatura em WebP e apaga a foto anterior. Para remover, use **Remover** (volta o espaço reservado com a marca).
 * Dicas: fotografe de cima ou a 45°, luz natural, fundo limpo e o prato centralizado (o recorte automático mantém o centro).

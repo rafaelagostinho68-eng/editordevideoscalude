@@ -1,11 +1,12 @@
 import { db } from "./db";
 import type { CatalogProduct } from "@/lib/pricing";
+import { artKind, type ArtKind } from "@/lib/art";
 
 export type MenuOption = { id: number; name: string; priceCents: number };
 export type MenuGroup = { id: number; name: string; description: string | null; required: boolean; minSelect: number; maxSelect: number; options: MenuOption[] };
 export type MenuProduct = {
   id: number; categoryId: number; name: string; description: string | null; portion: string | null; priceCents: number;
-  soldOut: boolean; featured: boolean; isNew: boolean; imageUrl: string | null; thumbUrl: string | null; imageAlt: string | null;
+  soldOut: boolean; featured: boolean; isNew: boolean; art: ArtKind; imageUrl: string | null; thumbUrl: string | null; imageAlt: string | null;
   groups: MenuGroup[];
 };
 export type MenuCategory = { id: number; name: string; slug: string; description: string | null };
@@ -25,11 +26,12 @@ export async function getMenu(): Promise<MenuData> {
     }),
   ]);
   const used = new Set(prods.map((p) => p.categoryId));
+  const catName = new Map(cats.map((c) => [c.id, c.name]));
   return {
     categories: cats.filter((c) => used.has(c.id)).map((c) => ({ id: c.id, name: c.name, slug: c.slug, description: c.description })),
     products: prods.map((p) => ({
       id: p.id, categoryId: p.categoryId, name: p.name, description: p.description, portion: p.portion, priceCents: p.priceCents,
-      soldOut: p.soldOut, featured: p.featured, isNew: p.isNew,
+      soldOut: p.soldOut, featured: p.featured, isNew: p.isNew, art: artKind(catName.get(p.categoryId), p.name),
       imageUrl: p.images[0] ? `/media/${p.images[0].path}` : null,
       thumbUrl: p.images[0] ? `/media/${p.images[0].thumbPath}` : null,
       imageAlt: p.images[0]?.alt ?? p.name,

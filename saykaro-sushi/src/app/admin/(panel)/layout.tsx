@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ExternalLink, LogOut } from "lucide-react";
-import { AdminNav } from "@/components/admin/AdminNav";
+import { AdminNav, MobileTabs } from "@/components/admin/AdminNav";
+import { NewOrderAlert } from "@/components/admin/NewOrderAlert";
 import { ToriiIcon } from "@/components/brand/Icons";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { db } from "@/server/db";
@@ -11,24 +12,27 @@ export const dynamic = "force-dynamic";
 
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
   const admin = await requireAdmin(); // sem sessão válida no banco → /admin/login
-  const [orders, pending] = await Promise.all([
+  const [orders, pending, noPhoto] = await Promise.all([
     db.order.count({ where: { status: { in: ["AWAITING_WHATSAPP", "RECEIVED"] } } }),
     db.catalogPending.count({ where: { resolved: false } }),
+    db.product.count({ where: { active: true, images: { none: {} } } }),
   ]);
+  const counts = { orders, pending, noPhoto };
   return (
     <div className="min-h-dvh lg:grid lg:grid-cols-[250px_1fr]">
-      <aside aria-label="Menu do painel" className="border-b border-line bg-surface lg:sticky lg:top-0 lg:h-dvh lg:border-b-0 lg:border-r">
-        <div className="flex items-center justify-between gap-3 px-4 pt-3 lg:flex-col lg:items-start lg:pt-5">
+      <aside aria-label="Barra do painel" className="border-b border-line bg-surface lg:sticky lg:top-0 lg:h-dvh lg:border-b-0 lg:border-r">
+        <div className="flex items-center justify-between gap-3 px-4 py-3 lg:flex-col lg:items-start lg:pb-0 lg:pt-5">
           <Link href="/admin" className="flex items-center gap-2">
             <ToriiIcon className="h-7 w-7 text-shu" />
             <span className="font-brand text-lg font-extrabold uppercase tracking-[0.08em]">Saykaro</span>
           </Link>
           <div className="flex items-center gap-2 lg:w-full lg:flex-row lg:pt-2">
             <Link href="/" target="_blank" className="btn btn-sm" aria-label="Abrir o cardápio em outra aba"><ExternalLink size={16} /> <span className="hidden sm:inline lg:inline">Ver cardápio</span></Link>
+            <NewOrderAlert />
             <ThemeToggle />
           </div>
         </div>
-        <div className="px-3 py-3 lg:pt-4"><AdminNav counts={{ orders, pending }} /></div>
+        <div className="hidden px-3 pb-3 lg:block lg:pt-4"><AdminNav counts={counts} /></div>
         <div className="hidden border-t border-line p-4 lg:absolute lg:inset-x-0 lg:bottom-0 lg:block">
           <Link href="/admin/conta" className="block truncate text-xs text-muted hover:text-ink" title="Minha conta (trocar senha)">{admin.name} · {admin.email}</Link>
           <form action={logoutAction} className="mt-2"><button className="btn btn-sm w-full"><LogOut size={16} /> Sair</button></form>
@@ -36,12 +40,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
       </aside>
       <div className="min-w-0">
         <main className="mx-auto w-full max-w-5xl px-4 py-5 pb-24 sm:px-6 lg:py-8">{children}</main>
-        <footer className="border-t border-line px-4 py-4 text-xs text-muted lg:hidden">
-          <div className="flex items-center justify-between gap-3">
-            <Link href="/admin/conta" className="truncate hover:text-ink">{admin.name} · {admin.email}</Link>
-            <form action={logoutAction}><button className="btn btn-sm"><LogOut size={16} /> Sair</button></form>
-          </div>
-        </footer>
+        <MobileTabs counts={counts} userLabel={`${admin.name} · ${admin.email}`} />
       </div>
     </div>
   );

@@ -10,8 +10,8 @@ Pedido finalizado **pelo WhatsApp** (v1, sem cobrança online). A arquitetura j�
 | Pedido do cliente | `/pedido/<token>` (link privado, `noindex`) |
 
 ## Prévia
-Capturas do sistema (dados de exemplo; produtos ainda sem foto mostram o espaço reservado):
-[celular 1](docs/previa/1-cliente-celular-parte1.png) · [celular 2](docs/previa/2-cliente-celular-parte2.png) · [cardápio no desktop](docs/previa/3-cardapio-desktop.png) · [painel](docs/previa/4-admin-painel.png) · [produtos](docs/previa/5-admin-produtos.png) · [pedido](docs/previa/6-admin-detalhe-do-pedido.png) · [editar produto](docs/previa/7-admin-editar-produto.png) · [restaurante](docs/previa/8-admin-restaurante.png)
+Capturas do sistema (dados de exemplo; produtos ainda sem foto mostram uma ilustração da categoria):
+[celular 1](docs/previa/1-cliente-celular-parte1.png) · [celular 2](docs/previa/2-cliente-celular-parte2.png) · [ilustrações](docs/previa/3b-cardapio-ilustracoes-celular.png) · [desktop](docs/previa/3-cardapio-desktop.png) · [painel](docs/previa/4-admin-painel.png) · [cardápio rápido](docs/previa/5-admin-cardapio-rapido.png) · [painel no celular](docs/previa/6-admin-celular.png) · [fotos em lote](docs/previa/7-admin-fotos-em-lote.png) · [pedido](docs/previa/8-admin-pedido.png) · [restaurante](docs/previa/9-admin-restaurante.png)
 
 **Temas:** o cardápio e o painel abrem no tema **claro**; o botão de lua/sol no topo alterna para o tema escuro (a escolha fica salva só naquele aparelho). As cores ficam em `src/app/globals.css` (`@theme` = claro, `[data-theme="dark"]` = escuro).
 
@@ -77,6 +77,13 @@ Senha: mínimo 10 caracteres. Guardada apenas como hash **scrypt** (N=2¹⁵). O
   BASE_URL=http://localhost:3000 E2E_ADMIN_EMAIL=... E2E_ADMIN_PASSWORD=... node e2e/acceptance.cjs
   ```
   Cria pedidos de teste e um produto temporário (removido ao final). **Use só em desenvolvimento/homologação.**
+
+## Painel do dono (feito para o celular)
+* **Cardápio rápido** (`/admin/produtos`): lista com **interruptores** "Disponível / Esgotado" e "No cardápio / Oculto", preço e nome editáveis direto na linha, busca, filtros (esgotados, ocultos, sem foto), "voltar tudo ao estoque" e ocultar categoria inteira. Cada mudança vale na hora e é conferida no servidor (se falhar, volta ao valor anterior e avisa).
+* **Fotos** (`/admin/fotos`): envio de **várias fotos de uma vez**; o nome do arquivo (ex.: `hot-filadelfia.jpg`) escolhe o produto sozinho e o resto se escolhe com um toque. Também dá para tocar na foto de qualquer produto e trocar. Redimensiona para 4:3 e otimiza.
+* **Sem foto?** O cardápio mostra uma ilustração por tipo de prato (sushi, sashimi, gyoza, missô, yakissoba…), claramente não é foto.
+* **Novo pedido**: com o painel aberto, aparece uma faixa "Novo pedido" (e o som, se o sino estiver ligado).
+* **Celular**: barra fixa embaixo (Painel, Pedidos, Cardápio, Restaurante, Mais).
 
 ## Segurança (resumo)
 * Login real: senha com **scrypt**, comparação em tempo constante, mesmo tempo de resposta para e-mail inexistente.

@@ -35,7 +35,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     ]);
     await removeFiles(...old.flatMap((i) => [i.path, i.thumbPath]));
     refresh(productId);
-    return Response.json({ url: `/media/${saved.path}` });
+    return Response.json({ url: `/media/${saved.path}`, thumbUrl: `/media/${saved.thumbPath}` });
   } catch (e) {
     if (e instanceof ImageError) return Response.json({ error: e.message }, { status: 422 });
     console.error("upload de imagem falhou", e);

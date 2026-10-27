@@ -92,3 +92,23 @@ textarea.field { min-height: 88px; resize: vertical; }
 .chip-warn { color: var(--color-gold-soft); border-color: color-mix(in srgb, var(--color-gold) 45%, var(--color-line)); }
 .chip-bad { color: var(--color-bad); border-color: color-mix(in srgb, var(--color-shu) 50%, var(--color-line)); }
 input[type="checkbox"].chk { width: 20px; height: 20px; accent-color: var(--color-shu); }
+
+/* Ilustrações de produto sem foto (FoodArt) — usam as cores do tema */
+.food-art .fa-shadow { fill: color-mix(in srgb, var(--color-ink) 9%, transparent); }
+.food-art .fa-rice { fill: #fbf8f2; stroke: color-mix(in srgb, var(--color-ink) 28%, transparent); stroke-width: 1.4; }
+.food-art .fa-red { fill: var(--color-shu); }
+.food-art .fa-fish { fill: none; stroke: color-mix(in srgb, #fff 55%, transparent); stroke-width: 2; stroke-linecap: round; }
+.food-art .fa-nori { fill: color-mix(in srgb, var(--color-ink) 82%, var(--color-bg)); }
+.food-art .fa-gold { fill: color-mix(in srgb, var(--color-gold) 78%, var(--color-surface)); stroke: color-mix(in srgb, var(--color-ink) 22%, transparent); stroke-width: 1.4; }
+.food-art .fa-gold2 { fill: color-mix(in srgb, var(--color-gold) 62%, var(--color-surface)); stroke: color-mix(in srgb, var(--color-ink) 22%, transparent); stroke-width: 1.4; }
+.food-art .fa-pleat { fill: none; stroke: color-mix(in srgb, var(--color-ink) 30%, transparent); stroke-width: 1.8; stroke-linecap: round; }
+.food-art .fa-shine { fill: none; stroke: color-mix(in srgb, #fff 60%, transparent); stroke-width: 2.4; stroke-linecap: round; }
+.food-art .fa-cut { fill: color-mix(in srgb, var(--color-gold) 25%, var(--color-surface)); stroke: color-mix(in srgb, var(--color-ink) 25%, transparent); stroke-width: 1.2; }
+.food-art .fa-green { fill: #3f8f4f; }
+.food-art .fa-bowl { fill: color-mix(in srgb, var(--color-ink) 78%, var(--color-bg)); }
+.food-art .fa-sauce { fill: #5a2a14; }
+.food-art .fa-wood { fill: color-mix(in srgb, var(--color-gold) 40%, #5a3b20); }
+.food-art .fa-wood2 { fill: color-mix(in srgb, var(--color-gold) 55%, #6b4a2a); }
+.food-art .fa-steam { fill: none; stroke: color-mix(in srgb, var(--color-ink) 22%, transparent); stroke-width: 2.4; stroke-linecap: round; }
+.food-art .fa-stick { fill: none; stroke: color-mix(in srgb, var(--color-ink) 75%, var(--color-bg)); stroke-width: 2.6; stroke-linecap: round; }
+.food-art .fa-sesame { fill: color-mix(in srgb, var(--color-ink) 45%, transparent); }

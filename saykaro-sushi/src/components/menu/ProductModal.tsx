@@ -58,7 +58,7 @@ function Inner({ product, onClose, paused, onAdded }: { product: MenuProduct; on
   return (
     <div className="flex flex-col">
       <div className="relative">
-        <ProductImage src={product.imageUrl} thumb={product.thumbUrl} alt={product.imageAlt ?? product.name} large priority className="max-h-[300px]" />
+        <ProductImage src={product.imageUrl} thumb={product.thumbUrl} alt={product.imageAlt ?? product.name} art={product.art} large priority className="max-h-[300px]" />
         {product.isNew && <span className="absolute left-3 top-3 rounded-md bg-shu px-2 py-1 text-xs font-bold uppercase tracking-wide text-white">Novo</span>}
       </div>
       <div className="space-y-5 p-5 pb-6">

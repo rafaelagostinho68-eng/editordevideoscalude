@@ -285,22 +285,61 @@ async function api(page, method, url, body) {
     eq(res.status, 422, "status"); assert(/inv[aá]lid|JPG/i.test(res.body.error), "mensagem");
   });
 
+  await check("edição rápida na lista: muda nome e preço sem abrir o produto", async () => {
+    await a.goto(BASE + "/admin/produtos", { waitUntil: "networkidle" });
+    await a.fill("#qm-q", testName);
+    const price = a.getByLabel(`Preço de ${testName}`);
+    await price.fill("17,40"); await price.blur();
+    await a.getByText("Preço salvo.").waitFor();
+    const bad = a.getByLabel(`Preço de ${testName}`);
+    await bad.fill("abc"); await bad.blur();
+    await a.getByText("Preço inválido").waitFor();
+    eq(await a.getByLabel(`Preço de ${testName}`).inputValue(), "17,40", "preço inválido deve voltar ao valor anterior");
+    const pub = await (await m.request.get(BASE + "/")).text();
+    assert(pub.includes("17,40"), "novo preço não chegou ao cardápio público");
+    await a.reload({ waitUntil: "networkidle" });
+    await a.fill("#qm-q", testName);
+    eq(await a.getByLabel(`Preço de ${testName}`).inputValue(), "17,40", "preço não persistiu");
+  });
+
+  await check("fotos em lote: o nome do arquivo escolhe o produto e a foto chega ao cardápio", async () => {
+    const f = path.join(require("node:os").tmpdir(), `${testName}.png`);
+    require("node:fs").writeFileSync(f, await sharp({ create: { width: 800, height: 600, channels: 3, background: "#2a7a4a" } }).png().toBuffer());
+    await a.goto(BASE + "/admin/fotos", { waitUntil: "networkidle" });
+    await a.setInputFiles("#bulk-files", f);
+    const sel = a.locator("select").first();
+    eq(await sel.evaluate((e) => e.selectedOptions[0].textContent.startsWith("Produto Teste")), true, "produto não foi escolhido pelo nome do arquivo");
+    await a.getByRole("button", { name: /Enviar 1 foto/ }).click();
+    await a.getByText("Enviada").first().waitFor();
+    const pub = await (await m.request.get(BASE + "/")).text();
+    assert(/\/media\/[0-9a-f-]{36}-t\.webp/.test(pub), "miniatura da foto não apareceu no cardápio");
+    await a.goto(BASE + "/admin/produtos", { waitUntil: "networkidle" });
+    await a.fill("#qm-q", testName);
+    assert((await a.locator("li.card img").count()) === 1, "a lista rápida deveria mostrar a foto nova");
+  });
+
   await check("produto esgotado aparece mas NÃO pode ser pedido (servidor bloqueia)", async () => {
-    await a.goto(BASE + "/admin/produtos?q=" + encodeURIComponent(testName));
-    await a.getByRole("button", { name: "Marcar esgotado" }).click();
-    await a.locator("li.card .chip-bad", { hasText: "Esgotado" }).first().waitFor();
+    await a.goto(BASE + "/admin/produtos", { waitUntil: "networkidle" });
+    await a.fill("#qm-q", testName);
+    await a.getByRole("switch", { name: `Disponível hoje: ${testName}` }).click();
+    await a.getByText("Marcado como esgotado.").waitFor();
     const pub = await (await m.request.get(BASE + "/")).text();
     assert(pub.includes(testName), "esgotado deveria continuar visível");
     const r = await api(m, "POST", "/api/orders", { idempotencyKey: crypto.randomUUID(), customerName: "Fulano", customerPhone: "21988887777", fulfillment: "PICKUP", lines: [{ productId: testProductId, quantity: 1, options: [] }] });
     eq(r.status, 409, "pedido de esgotado"); eq(r.json.errors[0].code, "SOLD_OUT", "código");
-    const v = await api(m, "POST", "/api/cart/validate", { lines: [{ productId: testProductId, quantity: 1, options: [] }] });
-    assert(v.status === 200, "validate");
+    // "voltar tudo ao estoque" limpa os esgotados
+    await a.getByRole("button", { name: /Voltar tudo ao estoque/ }).click();
+    await a.getByText("Tudo disponível de novo.").waitFor();
+    await a.reload({ waitUntil: "networkidle" });
+    await a.fill("#qm-q", testName);
+    eq(await a.getByRole("switch", { name: `Disponível hoje: ${testName}` }).getAttribute("aria-checked"), "true", "deveria estar disponível");
   });
 
   await check("produto desativado some do cardápio e não pode ser pedido", async () => {
-    await a.goto(BASE + "/admin/produtos?q=" + encodeURIComponent(testName));
-    await a.getByRole("button", { name: "Ocultar" }).click();
-    await a.locator("li.card .chip-warn", { hasText: "Oculto" }).first().waitFor();
+    await a.goto(BASE + "/admin/produtos", { waitUntil: "networkidle" });
+    await a.fill("#qm-q", testName);
+    await a.getByRole("switch", { name: `No cardápio: ${testName}` }).click();
+    await a.getByText("Oculto do cardápio.").waitFor();
     const pub = await (await m.request.get(BASE + "/")).text();
     assert(!pub.includes(testName), "produto oculto ainda aparece");
     const r = await api(m, "POST", "/api/orders", { idempotencyKey: crypto.randomUUID(), customerName: "Fulano", customerPhone: "21988887777", fulfillment: "PICKUP", lines: [{ productId: testProductId, quantity: 1, options: [] }] });
@@ -375,7 +414,7 @@ async function api(page, method, url, body) {
   await check("painel admin responsivo no celular (sem rolagem horizontal)", async () => {
     const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, storageState: await actx.storageState() });
     const p = await ctx.newPage();
-    for (const u of ["/admin", "/admin/produtos", `/admin/produtos/${testProductId}`, "/admin/categorias", "/admin/adicionais", "/admin/configuracoes", "/admin/pedidos", "/admin/pendencias"]) {
+    for (const u of ["/admin", "/admin/produtos", "/admin/fotos", `/admin/produtos/${testProductId}`, "/admin/categorias", "/admin/adicionais", "/admin/configuracoes", "/admin/pedidos", "/admin/pendencias"]) {
       await p.goto(BASE + u, { waitUntil: "networkidle" });
       eq(await overflow(p), 0, `overflow em ${u}`);
     }

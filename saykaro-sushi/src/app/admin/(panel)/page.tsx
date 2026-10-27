@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AlertTriangle, CheckCircle2, Circle, ImageOff, PauseCircle, PlayCircle } from "lucide-react";
+import { AlertTriangle, Camera, CheckCircle2, ChevronRight, CircleDollarSign, ClipboardList, Circle, ImageOff, PauseCircle, PlayCircle, Settings, UtensilsCrossed } from "lucide-react";
 import { AutoRefresh } from "@/components/admin/AutoRefresh";
 import { StatusChip } from "@/components/admin/StatusChip";
 import { formatBRL } from "@/lib/money";
@@ -44,7 +44,7 @@ export default async function Dashboard() {
   const checklist = [
     { done: hoursOn > 0, label: "Cadastrar os horários de funcionamento", href: "/admin/configuracoes#horarios", why: "Sem horários, o cardápio mostra “Confira o horário pelo WhatsApp”." },
     { done: zones > 0, label: "Cadastrar bairros e taxas de entrega", href: "/admin/configuracoes#entrega", why: "Sem bairros, toda entrega aparece como “taxa a confirmar”." },
-    { done: noPhoto === 0, label: `Enviar fotos dos produtos (${noPhoto} sem foto)`, href: "/admin/produtos?estado=semfoto", why: "Produtos sem foto mostram um espaço elegante com a marca." },
+    { done: noPhoto === 0, label: `Enviar fotos dos produtos (${noPhoto} sem foto)`, href: "/admin/fotos", why: "Produtos sem foto mostram um espaço elegante com a marca." },
     { done: pending === 0, label: `Confirmar pendências do cardápio (${pending})`, href: "/admin/pendencias", why: "Itens do material original que não foram publicados por falta de confirmação." },
   ];
 
@@ -77,6 +77,21 @@ export default async function Dashboard() {
         </div>
       </section>
 
+      <section aria-label="Atalhos" className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        {[
+          { href: "/admin/produtos", icon: UtensilsCrossed, t: "Esgotar ou ocultar", d: "Ligar e desligar produtos na hora" },
+          { href: "/admin/produtos", icon: CircleDollarSign, t: "Mudar preço ou nome", d: "Edite direto na lista" },
+          { href: "/admin/fotos", icon: Camera, t: "Enviar fotos", d: "Várias de uma vez ou uma a uma" },
+          { href: "/admin/pedidos", icon: ClipboardList, t: "Ver pedidos", d: "Status e histórico" },
+        ].map((a) => (
+          <Link key={a.t} href={a.href} className="card group flex flex-col gap-1.5 transition hover:border-ink/40">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-shu/10 text-shu-hot"><a.icon size={20} aria-hidden /></span>
+            <b className="mt-1 flex items-center justify-between text-[15px]">{a.t}<ChevronRight size={16} className="text-muted transition group-hover:translate-x-0.5" aria-hidden /></b>
+            <span className="text-sm text-muted">{a.d}</span>
+          </Link>
+        ))}
+      </section>
+
       <section className="grid grid-cols-2 gap-3 md:grid-cols-4" aria-label="Números">
         <Stat label="Aguardando envio" value={awaiting} href="/admin/pedidos?status=AWAITING_WHATSAPP" tone="warn" />
         <Stat label="Recebidos (a preparar)" value={received} href="/admin/pedidos?status=RECEIVED" tone="warn" />
@@ -84,7 +99,7 @@ export default async function Dashboard() {
         <Stat label="Categorias ativas" value={cats} href="/admin/categorias" />
         <Stat label="Produtos ativos" value={activeProducts} href="/admin/produtos?estado=visiveis" />
         <Stat label="Esgotados" value={soldOut} href="/admin/produtos?estado=esgotados" />
-        <Stat label="Sem foto" value={noPhoto} href="/admin/produtos?estado=semfoto" />
+        <Stat label="Sem foto" value={noPhoto} href="/admin/fotos" />
         <Stat label="Pendências" value={pending} href="/admin/pendencias" tone="warn" />
       </section>
 
