@@ -1,0 +1,15 @@
+[original] erros de aninhamento: 0 [] | tags abertas no fim: [] | ids duplicados: []
+[proposta] erros de aninhamento: 0 [] | tags abertas no fim: [] | ids duplicados: []
+JSON-LD blocos: 6 -> 6 (todos parseiam)
+Article.dateModified: 2026-11-01T00:00:00-03:00 | datePublished: 2026-06-09T00:00:00-03:00
+ItemList: 9 ['Agendali', 'AppBeleza', 'Booksy', 'Fresha', 'GENDA Beleza', 'Horario.vc', 'Minha Agenda', 'Trinks', 'Tua Agenda']
+FAQ HTML: 10 | FAQ JSON-LD: 10
+FAQ divergências: 0
+Datas visíveis/estruturadas: ['2026-11-01', '2026-11-01'] ['2026-11-01']
+âncoras # sem destino: []
+  resíduo: \bsete\b 1
+  resíduo: os 7\b 2
+tamanho: 83788 -> 100565 bytes
+CTAs de cadastro: 4 -> 4
+imagens: 9 -> 9 | iframe: 1 -> 1
+links externos novos: ['https://genda.work/beleza', 'https://www.horario.vc/', 'https://www.horario.vc/precos']

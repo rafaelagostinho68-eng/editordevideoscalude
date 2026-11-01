@@ -1,0 +1,12 @@
+HTTP/1.1 200 Connection Established
+
+HTTP/2 200 
+server: nginx/1.18.0 (Ubuntu)
+date: Sun, 01 Nov 2026 19:28:12 GMT
+content-type: text/html
+content-length: 85144
+last-modified: Thu, 29 Oct 2026 21:07:20 GMT
+etag: "6ae3b588-14c98"
+cache-control: no-cache, must-revalidate
+accept-ranges: bytes
+

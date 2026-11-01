@@ -1,0 +1,63 @@
+{
+ "original_390": {
+  "perf": {
+   "cls": 0,
+   "lcp": 1116,
+   "dom": 834
+  },
+  "violations": [
+   {
+    "id": "landmark-complementary-is-top-level",
+    "impact": "moderate",
+    "n": 1
+   }
+  ]
+ },
+ "original_1280": {
+  "perf": {
+   "cls": 0.0003,
+   "lcp": 832,
+   "dom": 834
+  },
+  "violations": [
+   {
+    "id": "color-contrast",
+    "impact": "serious",
+    "n": 1
+   },
+   {
+    "id": "landmark-complementary-is-top-level",
+    "impact": "moderate",
+    "n": 1
+   }
+  ]
+ },
+ "proposta_390": {
+  "perf": {
+   "cls": 0,
+   "lcp": 760,
+   "dom": 1013
+  },
+  "violations": [
+   {
+    "id": "landmark-complementary-is-top-level",
+    "impact": "moderate",
+    "n": 1
+   }
+  ]
+ },
+ "proposta_1280": {
+  "perf": {
+   "cls": 0.0003,
+   "lcp": 868,
+   "dom": 1013
+  },
+  "violations": [
+   {
+    "id": "landmark-complementary-is-top-level",
+    "impact": "moderate",
+    "n": 1
+   }
+  ]
+ }
+}

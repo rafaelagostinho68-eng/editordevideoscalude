@@ -1,0 +1,272 @@
+{
+ "original_320": {
+  "vw": 320,
+  "scrollW": 320,
+  "overflowX": false,
+  "over": [],
+  "imgsTotal": 9,
+  "imgsBroken": [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "height": 22733,
+  "respostaTop": 1015,
+  "tabelaTop": 3022,
+  "h1": "Melhor App de Agendamento para Manicure e Nail Designer em 2",
+  "ctas": 4,
+  "fichas": 7,
+  "faq": 9,
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "original_360": {
+  "vw": 360,
+  "scrollW": 360,
+  "overflowX": false,
+  "over": [],
+  "imgsTotal": 9,
+  "imgsBroken": [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "height": 21087,
+  "respostaTop": 1011,
+  "tabelaTop": 2881,
+  "h1": "Melhor App de Agendamento para Manicure e Nail Designer em 2",
+  "ctas": 4,
+  "fichas": 7,
+  "faq": 9,
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "original_390": {
+  "vw": 390,
+  "scrollW": 390,
+  "overflowX": false,
+  "over": [],
+  "imgsTotal": 9,
+  "imgsBroken": [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "height": 19998,
+  "respostaTop": 965,
+  "tabelaTop": 2726,
+  "h1": "Melhor App de Agendamento para Manicure e Nail Designer em 2",
+  "ctas": 4,
+  "fichas": 7,
+  "faq": 9,
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "original_768": {
+  "vw": 768,
+  "scrollW": 768,
+  "overflowX": false,
+  "over": [],
+  "imgsTotal": 9,
+  "imgsBroken": [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "height": 21457,
+  "respostaTop": 1055,
+  "tabelaTop": 2263,
+  "h1": "Melhor App de Agendamento para Manicure e Nail Designer em 2",
+  "ctas": 4,
+  "fichas": 7,
+  "faq": 9,
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "original_1280": {
+  "vw": 1280,
+  "scrollW": 1280,
+  "overflowX": false,
+  "over": [],
+  "imgsTotal": 9,
+  "imgsBroken": [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "height": 17573,
+  "respostaTop": 1190,
+  "tabelaTop": 1993,
+  "h1": "Melhor App de Agendamento para Manicure e Nail Designer em 2",
+  "ctas": 4,
+  "fichas": 7,
+  "faq": 9,
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "proposta_320": {
+  "vw": 320,
+  "scrollW": 320,
+  "overflowX": false,
+  "over": [],
+  "imgsTotal": 9,
+  "imgsBroken": [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "height": 25933,
+  "respostaTop": 1015,
+  "tabelaTop": 4167,
+  "h1": "Melhor App de Agendamento para Manicure e Nail Designer em 2",
+  "ctas": 4,
+  "fichas": 9,
+  "faq": 10,
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "proposta_360": {
+  "vw": 360,
+  "scrollW": 360,
+  "overflowX": false,
+  "over": [],
+  "imgsTotal": 9,
+  "imgsBroken": [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "height": 23938,
+  "respostaTop": 1011,
+  "tabelaTop": 3880,
+  "h1": "Melhor App de Agendamento para Manicure e Nail Designer em 2",
+  "ctas": 4,
+  "fichas": 9,
+  "faq": 10,
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "proposta_390": {
+  "vw": 390,
+  "scrollW": 390,
+  "overflowX": false,
+  "over": [],
+  "imgsTotal": 9,
+  "imgsBroken": [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "height": 22646,
+  "respostaTop": 965,
+  "tabelaTop": 3654,
+  "h1": "Melhor App de Agendamento para Manicure e Nail Designer em 2",
+  "ctas": 4,
+  "fichas": 9,
+  "faq": 10,
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "proposta_768": {
+  "vw": 768,
+  "scrollW": 768,
+  "overflowX": false,
+  "over": [],
+  "imgsTotal": 9,
+  "imgsBroken": [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "height": 25536,
+  "respostaTop": 1055,
+  "tabelaTop": 2816,
+  "h1": "Melhor App de Agendamento para Manicure e Nail Designer em 2",
+  "ctas": 4,
+  "fichas": 9,
+  "faq": 10,
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ },
+ "proposta_1280": {
+  "vw": 1280,
+  "scrollW": 1280,
+  "overflowX": false,
+  "over": [],
+  "imgsTotal": 9,
+  "imgsBroken": [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  "height": 20449,
+  "respostaTop": 1190,
+  "tabelaTop": 2427,
+  "h1": "Melhor App de Agendamento para Manicure e Nail Designer em 2",
+  "ctas": 4,
+  "fichas": 9,
+  "faq": 10,
+  "errors": [
+   "Failed to load resource: net::ERR_FAILED",
+   "Failed to load resource: net::ERR_FAILED"
+  ]
+ }
+}
